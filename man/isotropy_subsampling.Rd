@@ -16,9 +16,9 @@ isotropy_subsampling(
 )
 }
 \arguments{
-\item{data}{A dataframe with three column containing the data (first column) and the grid (second and third column).}
+\item{data}{A dataframe with three columns containing the data (first column) and the grid (second and third column).}
 
-\item{lagmat}{A matrix of spatial lags, where each row represent a lag vector specified as \eqn{(lag.x, lag.y)} for which the semivariogram value is to be estimated.}
+\item{lagmat}{A matrix of spatial lags, where each row represents a lag vector specified as \eqn{(lag.x, lag.y)} for which the semivariogram value is to be estimated.}
 
 \item{A}{A contrast matrix, where each row defines a contrast of the estimated semivariogram evaluated at the lags specified in \code{lagmat}.}
 
@@ -33,19 +33,19 @@ isotropy_subsampling(
 \item{c.regularisation}{Numeric. A value between 0 and 1. Needed for the regularisation of the covariance estimation, if this is singular. See Gierse and Fried (2026); default: 0.1.}
 }
 \value{
-An object of class "isotropyRob" which is a list with an list for each estimator containing the following elements
+An object of class "isotropyRob" with a list for each estimator containing the following elements
 \itemize{
-\item teststatistic: value of the teststatistic
+\item teststatistic: value of the test statistic
 \item p.value: calculated p-value
 \item cov: a list with the following two elements:
 \itemize{
 \item cov: a matrix containing the estimated covariance matrix of the estimated semivariogram vector for all lags of \code{lagmat}
 \item gamma.sub: a matrix with the semivariogram estimations for each subsample
 }
-\item regularisation: information if the regularised version of the covariance estimation is used in the teststatistic}
+\item regularisation: information if the regularised version of the covariance estimation is used in the test statistic}
 }
 \description{
-Returns the nonparametric test of istoropy from Guan et. al. (2004) based on the variogram using a subsampling technique for test decision for data on a regular grid. See Guan et. al. (2004) for more details.
+Returns the nonparametric test of isotropy from Guan et. al. (2004) based on the variogram using a subsampling technique for test decision for data on a regular grid. See Guan et. al. (2004) for more details.
 }
 \details{
 This functions implements the subsampling test for isotropy of Guan et al. (2004) as well as a version of the test, where the Matheron variogram estimator is
@@ -54,8 +54,8 @@ replaced by robust variogram estimators. For more information about this see Gie
 The idea of the test is to compare variogram estimations for lag vectors with the same distance but different directions using a contrast test. A subsampling approach
 with small overlapping subsamples is used for estimation of the covariance matrix of the variogram estimation and for the p-value calculation.
 
-Implemented are three different estimators the Matheron variogram estimator (Matheron, 1962), the robust Genton estimator (Genton, 1998) and the robust MCD.diff estimator (Gierse and Fried, 2025).
-More information about the implementation can be found in documentations of the functions
+Implemented are three different estimators: the Matheron variogram estimator (Matheron, 1962), the robust Genton estimator (Genton, 1998) and the robust MCD.diff estimator (Gierse and Fried, 2025).
+More information about the implementation can be found in the documentations of the functions
 \code{\link{variogram_est}} and \code{\link{variogram_est_general}}.
 }
 \examples{
@@ -78,7 +78,7 @@ Genton, M. (1998). Highly robust variogram estimation. \emph{Mathematical Geolog
 
 Gierse, J., & Fried, R. (2025). Nonparametric directional variogram estimation in the presence of outlier blocks. \emph{Statistical Papers}, 66(134). \doi{https://doi.org/10.1007/s00362-025-01754-2}
 
-Gierse, J. & Fried. R. (2026). EINFÜGEN
+Gierse, J. & Fried. R. (2026). A robust nonparametric test for spatial isotropy in lattice data, \emph{arXiv}. \doi{https://doi.org/10.48550/arXiv.2605.18030}
 
 Guan, Y., Sherman, M. & Calvin, J. A. (2004). A nonparametric test for spatial isotropy using subsampling. \emph{J. Americ. Statist. Assoc.}, 99, 810-821. \doi{https://doi.org/10.1198/016214504000001150}
 

@@ -60,7 +60,7 @@
 #'  \vdots \\
 #'  Z(\boldsymbol{s}) - Z(\boldsymbol{s}+\boldsymbol{h}_{h_{\max}})
 #'  \end{pmatrix}}
-#'  Again the function \code{covMcd} of the package \pkg{robustbase} to robust estimate the variance-covariance matrix of these vectors. The estimated
+#'  Again the function \code{covMcd} of the package \pkg{robustbase} is used to estimate the variance-covariance matrix of these vectors. The estimated
 #'  variogram values are then obtained from the diagonal of the estimated covariance matrix
 #'  \deqn{2\widehat{\gamma}(\boldsymbol{h}) = \text{diag}\left(\widehat{\boldsymbol{\Sigma}}\right)}
 #'

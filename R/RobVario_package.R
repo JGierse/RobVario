@@ -20,7 +20,7 @@
 #'
 #' - Gierse, J., & Fried, R. (2025). Nonparametric directional variogram estimation in the presence of outlier blocks. \emph{Statistical Papers}, 66(134). \doi{https://doi.org/10.1007/s00362-025-01754-2}
 #'
-#' - Gierse, J. & Fried. R. (2026). EINFÜGEN
+#' - Gierse, J. & Fried. R. (2026). A robust nonparametric test for spatial isotropy in lattice data, \emph{arXiv}. \doi{https://doi.org/10.48550/arXiv.2605.18030}
 #'
 #' - Guan, Y., Sherman, M. & Calvin, J. A. (2004). A nonparametric test for spatial isotropy using subsampling. \emph{J. Americ. Statist. Assoc.}, 99, 810-821. \doi{https://doi.org/10.1198/016214504000001150}
 #'

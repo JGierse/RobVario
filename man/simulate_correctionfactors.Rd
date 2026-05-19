@@ -2,7 +2,7 @@
 % Please edit documentation in R/simulation_correctionfactors.R
 \name{simulate_correctionfactors}
 \alias{simulate_correctionfactors}
-\title{Simulate of correctionfactors for the variogram estimators for small grids}
+\title{Simulate of correction factors for the variogram estimators for small grids}
 \usage{
 simulate_correctionfactors(
   gridsize,
@@ -30,7 +30,7 @@ simulate_correctionfactors(
 
 \item{variogram}{The variogram model. See \code{vgm} of the package \pkg{gstat} for more information; default \code{"Sph"}.}
 
-\item{range}{Numeric. A start value for the range estimation. If \code{NULL} the start value is the half of the largest lag; default is \code{NULL}.}
+\item{range}{Numeric. A start value for the range estimation. If \code{NULL} the start value is half of the largest lag; default is \code{NULL}.}
 
 \item{sill}{Numeric. A start value for the sill estimation. If \code{NULL} the start value is the mean of the variogram estimation for the three highest lags; default is \code{NULL}.}
 
@@ -52,7 +52,7 @@ Returns simulated finite sample correction factors for (non-)robust directional 
 For small grid sizes and if many lags in one direction should be estimated, the robust estimator needs multiplicative finite sample correction factors (see Gierse & Fried, 2025).
 The correction factors are simulated based on the grid size as well as the lags of interest using gaussian random fields. The procedure is the following:
 
-1. estimate the range of the variogram given the variogram estimation for the in \code{variogram} specified variogram model using a least square estimator
+1. estimate the range of the variogram given the variogram estimation for the variogram model specified in \code{variogram} using a least squares estimator
 
 2. simulate data (gaussian random field) for the variogram model using the estimated range, a sill of 1 and a nugget of 0
 
@@ -62,7 +62,7 @@ The correction factors are simulated based on the grid size as well as the lags 
 
 Only the estimated range is used for simulation of the data, since the sill as well as the nugget effect cannot be estimated from the uncorrected data.
 
-For the simulation of the data the function \code{predict} of the package \pkg{gstat} is used.
+For the simulation of the data the function \code{predict} from the package \pkg{gstat} is used.
 
 If no start values for the variogram parameters are defined, they are specified as follows
 \itemize{

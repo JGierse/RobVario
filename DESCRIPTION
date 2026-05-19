@@ -1,6 +1,6 @@
 Package: RobVario
 Type: Package
-Title: Nonparametric variogram estimation and isotropytest for spatial data
+Title: Nonparametric variogram estimation and isotropy test for spatial data
 Version: 0.1.0
 Author: Jana Gierse [aut, cre] (<https://orcid.org/0000-0003-3321-8025>),
   Roland Fried [aut] (<https://orcid.org/0000-0002-9830-9713>),

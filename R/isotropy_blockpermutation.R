@@ -1,21 +1,21 @@
-#' Isotropytest based on the variogram using blockpermutation
+#' Isotropy test based on the variogram using block permutation
 #'
-#' Returns robust and non-robust isotropy test based on the variogram using blockpermutation approach for test decision
+#' Returns robust and non-robust isotropy test based on the variogram using a block permutation approach for test decision
 #'
 #' @param data A data frame with three column containing the data (first column) and the grid (second and third column).
-#' @param lagmat  A matrix of spatial lags, where each row represent a lag vector specified as \eqn{(lag.x, lag.y)} for which the semivariogram value is to be estimated.
+#' @param lagmat  A matrix of spatial lags, where each row represents a lag vector specified as \eqn{(lag.x, lag.y)} for which the semivariogram value is to be estimated.
 #' @param A A contrast matrix, where each row defines a contrast of the estimated semivariogram evaluated at the lags specified in \code{lagmat}.
-#' @param estimator A character string or vector of character strings specifying the estimators to be used. Possible values are \code{"matheron"}, \code{"genton"}, \code{"mcd"}. If \code{"all"} all three estimators are used. See details. Default is \code{"all"}.
-#' @param window.dims A length-two vector specifying to the width and height of the subblocks -given as the number of columns and rows, respectively- used in the blockpermutation approach. See details.
-#' @param var.robust Logical. If \code{TRUE} a robust covariance estimator is used for estimation of the covaraince matrix else the classical sample covariance matrix estimator is used. See details. Default is \code{TRUE}.
+#' @param estimator A character string or vector of character strings specifying the estimators to be used. Possible values are \code{"matheron"}, \code{"genton"}, \code{"mcd"}. For \code{"all"} all three estimators are used. See details. Default is \code{"all"}.
+#' @param window.dims A length-two vector specifying to the width and height of the subblocks -given as the number of columns and rows, respectively- used in the block permutation approach. See details.
+#' @param var.robust Logical. If \code{TRUE} a robust covariance estimator is used for estimation of the covariance matrix, otherwise the classical sample covariance matrix estimator is used. See details. Default is \code{TRUE}.
 #' @param c.regularisation Numeric. A value between 0 and 1. Needed for the regularisation of the covariance estimation, if this is singular. See Gierse and Fried (2026); default: 0.1.
-#' @param B Numeric. Number of permutations in the blockpermutations approach. Default is 1000.
+#' @param B Numeric. Number of permutations in the block permutations approach. Default is 1000.
 #'
 #' @details
-#' This functions implements the blockpermutation test for isotropy proposed by Gierse and Fried (2026).  The test is based on the test idea of Guan et al. (2004).
+#' This functions implements the block permutation test for isotropy proposed by Gierse and Fried (2026).  The test is based on the test idea of Guan et al. (2004).
 #'
-#' The idea of the test is to compare variogram estimations for lag vectors with the same distance but different directions using a contrast test. A blockpermutation approach
-#' with small non-overlapping block is used for estimation of the covariance matrix of the variogram estimation and for the p-value calculation. For more details see  Gierse and Fried (2026).
+#' The idea of the test is to compare variogram estimations for lag vectors with the same distance but different directions using a contrast test. A block permutation approach
+#' with small non-overlapping blocks is used for estimation of the covariance matrix of the variogram estimation and for the p-value calculation. For more details see  Gierse and Fried (2026).
 #'
 #' Implemented are three different estimators the Matheron variogram estimator (Matheron, 1962), the robust Genton estimator (Genton, 1998) and the robust MCD.diff estimator (Gierse and Fried, 2025).
 #' More information about the implementation can be found in documentations of the functions
@@ -23,21 +23,21 @@
 #'
 #' @return An object of class "isotropyRob" which is a list with an list for each estimator containing the following elements
 #' \itemize{
-#' \item teststatistic: value of the teststatistic
+#' \item teststatistic: value of the test statistic
 #' \item p.value: calculated p-value
 #' \item cov: a list with the following two elements:
 #' \itemize{
 #' \item cov: a matrix containing the estimated covariance matrix of the estimated semivariogram vector for all lags of \code{lagmat}
 #' \item gamma.sub: a matrix with the semivariogram estimations for each permutated data set
 #' }
-#' \item regularization: information if the regularized version of the covariance estimation is used in the teststatistic}
+#' \item regularization: information if the regularized version of the covariance estimation is used in the test statistic}
 #'
 #'@references
 #' Genton, M. (1998). Highly robust variogram estimation. \emph{Mathematical Geology}, 30, 213-221. \doi{https://doi.org/10.1023/A:1021728614555}
 #'
 #' Gierse, J., & Fried, R. (2025). Nonparametric directional variogram estimation in the presence of outlier blocks. \emph{Statistical Papers}, 66(134). \doi{https://doi.org/10.1007/s00362-025-01754-2}
 #'
-#' Gierse, J. & Fried. R. (2026). EINFÜGEN
+#' Gierse, J. & Fried. R. (2026). A robust nonparametric test for spatial isotropy in lattice data, \emph{arXiv}. \doi{https://doi.org/10.48550/arXiv.2605.18030}
 #'
 #' Guan, Y., Sherman, M. & Calvin, J. A. (2004). A nonparametric test for spatial isotropy using subsampling. \emph{J. Americ. Statist. Assoc.}, 99, 810-821. \doi{https://doi.org/10.1198/016214504000001150}
 #'

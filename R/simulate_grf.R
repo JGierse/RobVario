@@ -9,7 +9,7 @@
 #' @param nugget Numeric. Specifies the nugget effect; default: \code{NULL}
 #' @param aniso.param A two-dimensional vector containing the parameters of the geometric anisotropy. The first element is the rotation angle and the second one the anisotropy ratio. If \code{NULL} an isotropic random field is simulated; default: \code{NULL}.
 #' @param out.type A character string specifying the type of outlier (\code{"block"} or \code{"isolated"}. If \code{NULL} a random field without outliers is simulated. See also details; default: \code{NULL}.
-#' @param block.type A character string only needed for generation of block outliers. It specifies wheather the outlier block should be nearly quadratic (\code{"square"}), as rectangular as possible (\code{"rectangle"}) or if it is random (\code{"random"}).
+#' @param block.type A character string only needed for generation of block outliers. It specifies whether the outlier block should be nearly quadratic (\code{"square"}), as rectangular as possible (\code{"rectangle"}) or if it is random (\code{"random"}).
 #' @param amount  Numeric. A value between 0 and 1 specifying the amount of outlier; default: \code{NULL}.
 #' @param param.outlier  A vector specifying the parameters of the outlier distribution; default: \code{NULL}.
 #' @param mixture logical. Specifying whether the outlier should be generated as mixture model (\code{TRUE}) or as additive outliers (\code{FALSE}); default \code{TRUE}.
@@ -20,11 +20,11 @@
 #'          using the function \code{grf} of package \pkg{geoR}.
 #'          GRFs with outliers are generated in the following manner:
 #'
-#'          Isolated outliers (occur randomly of the grid):
-#'          \eqn{Y(\boldsymbol{s})|N_{n_0} = \begin{cases} Z(\boldsymbol{s}),~\text{ if } \boldsymbol{s} \notin N_{n_0} \\ W,~ \text{ if } \boldsymbol{s} \in N_{n_0}\end{cases}}
+#'          Isolated outliers (occur randomly on the grid):
+#'          \eqn{Y(\boldsymbol{s})|N_{n_0} = \begin{cases} Z(\boldsymbol{s}),~\text{ if } \boldsymbol{s} \notin N_{n_0} \\ W(\boldsymbol{s}),~ \text{ if } \boldsymbol{s} \in N_{n_0}\end{cases}}
 #'
 #'          Block outliers (occur spatially aggregated in a block):
-#'          \eqn{Y(\boldsymbol{s})|(U=\boldsymbol{s}_0) = \begin{cases} Z(\boldsymbol{s}),~\text{ if } \boldsymbol{s} \notin N(\boldsymbol{s}_0) \\W,~ \text{ if } \boldsymbol{s} \in N(\boldsymbol{s}_0)\end{cases}}
+#'          \eqn{Y(\boldsymbol{s})|(U=\boldsymbol{s}_0) = \begin{cases} Z(\boldsymbol{s}),~\text{ if } \boldsymbol{s} \notin N(\boldsymbol{s}_0) \\W(\boldsymbol{s}),~ \text{ if } \boldsymbol{s} \in N(\boldsymbol{s}_0)\end{cases}}
 #'
 #'          Thereby \eqn{Z(\boldsymbol{s})} is the GRF without outliers, \eqn{N_{n_0}} is a set of \eqn{n_0} randomly selected locations of the grid, \eqn{W} is the distribution of the outliers, \eqn{N(\boldsymbol{s}_0)} is a block neighbourhood around the gridpoint \eqn{\boldsymbol{s}_0} and \eqn{U} is a random variable which select one gridpoint.
 #'          For more information see Gierse and Fried (2025).
@@ -41,16 +41,16 @@
 #'
 #' @examples
 #' \donttest{
-#'  ## Simulation of an anisotrop GRF without outliers
+#'  ## Simulation of an anisotropic GRF without outliers
 #'  dat1 <-  simulate_grf(gridsize = c(20, 20), param.variogram = c(1, 6),
 #'                        aniso.param = c(pi/4, 2), n.it = 1)
 #'
-#'  ## Simulation of an anisotrop GRF with isolated outliers
+#'  ## Simulation of an anisotropic GRF with isolated outliers
 #'  dat2 <-  simulate_grf(gridsize = c(20, 20), param.variogram = c(1, 6),
 #'                        aniso.param = c(pi/4, 2), out.type = "isolated",
 #'                        amount = 0.1, param.outlier = c(0,5), n.it = 1)
 #'
-#'  ## Simulation of an anisotrop GRF with an quadratic outlier block
+#'  ## Simulation of an anisotropic GRF with an quadratic outlier block
 #'  dat2 <-  simulate_grf(gridsize = c(20, 20), param.variogram = c(1, 6),
 #'                        aniso.param = c(pi/4, 2), out.type = "block",
 #'                        block.type = "square", amount = 0.1,

@@ -27,7 +27,7 @@ variogram_est_general(
 \item{...}{Optional argument for the function \code{covMcd} of the package \pkg{robustbase} used for the MCD based variogram estimators}
 }
 \value{
-An object of class "varioRobgen" which is a list with an dataframe for each direction with columns
+An object of class "varioRobgen" which is a list with a dataframe for each direction with columns
 \itemize{
 \item lag.x: lag in the E-W direction (along the x-axis)
 \item lag.y: lag in the S-N direction (along the y-axis)

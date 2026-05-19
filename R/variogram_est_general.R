@@ -70,7 +70,7 @@
 #' If the set of lag vectors of interest contains only vectors  in the following directions south-north, east-west, southeast-northwest and southwest-northeast,
 #' then the function \code{variogram_est} should be used, as it has better runtime performance.
 #'
-#' @return An object of class "varioRobgen" which is a list with an dataframe for each direction with columns
+#' @return An object of class "varioRobgen" which is a list with a dataframe for each direction with columns
 #' \itemize{
 #' \item lag.x: lag in the E-W direction (along the x-axis)
 #' \item lag.y: lag in the S-N direction (along the y-axis)

@@ -1,26 +1,26 @@
 #' Isotropytest based on the variogram
 #'
-#' Returns robust and non-robust isotropy test based on the variogram using a subsampling or a blockpermutation approach for test decision
+#' Returns robust and non-robust isotropy test based on the variogram using a subsampling or a block permutation approach for test decision
 #'
 #' @param data A data frame with three column containing the data (first column) and the grid (second and third column).
 #' @param lagmat  A matrix of spatial lags, where each row represent a lag vector specified as \eqn{(lag.x, lag.y)} for which the semivariogram value is to be estimated.
 #' @param A A contrast matrix, where each row defines a contrast of the estimated semivariogram evaluated at the lags specified in \code{lagmat}.
 #' @param estimator A character string or vector of character strings specifying the estimators to be used. Possible values are \code{"matheron"}, \code{"genton"}, \code{"mcd"}. If \code{"all"} all three estimators are used. See details. Default is \code{"all"}.
-#' @param method A character string specifying the mehtod, which is used for estimation of the covariance matrix as well as for p-value calculation. Possible values are \code{"subsampling"} or \code{"blockpermutation"}. See details.
-#' @param window.dims A length-two vector specifying to the width and height of the moving windows -given as the number of columns and rows, respectively- used in the subsampling approach.
-#' @param var.robust Logical. If \code{TRUE} a robust covariance estimator is used for estimation of the covariance matrix else the classical sample covariance matrix estimator is used. See details. Default is \code{TRUE}.
+#' @param method A character string specifying the method which is used for estimation of the covariance matrix as well as for p-value calculation. Possible values are \code{"subsampling"} or \code{"blockpermutation"}. See details.
+#' @param window.dims A length-two vector specifying the width and height of the moving windows -given as the number of columns and rows, respectively- used in the subsampling approach.
+#' @param var.robust Logical. If \code{TRUE} a robust covariance estimator is used for estimation of the covariance matrix, else the classical sample covariance matrix estimator is used. See details. Default is \code{TRUE}.
 #' @param edge.sub Logical. If \code{TRUE} a correction for edge effects is used in the supsampling approach as suggested in Guan et. al. (2004). Default is \code{TRUE}.
 #' @param c.regularisation Numeric. A value between 0 and 1. Needed for the regularisation of the covariance estimation, if this is singular. See Gierse and Fried (2026); default: 0.1.
-#' @param B Numeric. Used permutations in the blockpermutations approach. Default is 1000. description
+#' @param B Numeric. Used permutations in the block permutations approach. Default is 1000. description
 #'
 #' @details
 #' This functions implements tests for isotropy based on the idea of Guan et al. (2004). All test are explained in Gierse and Fried (2026).
 #'
 #' The idea of the test is to compare variogram estimations for lag vectors with the same distance but different directions using a contrast test.
-#' For the p-value calculation a subsampling approach with small overlapping subsamples or a blockpermutation approach with non-overlapping block is used.
+#' For the p-value calculation a subsampling approach with small overlapping subsamples or a block permutation approach with non-overlapping blocks is used.
 #'
 #' Implemented are three different estimators the Matheron variogram estimator (Matheron, 1962), the robust Genton estimator (Genton, 1998) and the robust MCD.diff estimator (Gierse and Fried, 2025).
-#' More information about the implementation can be found in documentations of the functions
+#' More information about the implementation can be found in the documentations of the functions
 #' \code{\link{variogram_est}} and \code{\link{variogram_est_general}}.
 #'
 #' @return An object of class "isotropyRob" which is a list with an list for each estimator containing the following elements
@@ -39,7 +39,7 @@
 #'
 #' Gierse, J., & Fried, R. (2025). Nonparametric directional variogram estimation in the presence of outlier blocks. \emph{Statistical Papers}, 66(134). \doi{https://doi.org/10.1007/s00362-025-01754-2}
 #'
-#' Gierse, J. & Fried. R. (2026). EINFÜGEN
+#' Gierse, J. & Fried. R. (2026). A robust nonparametric test for spatial isotropy in lattice data, \emph{arXiv}. \doi{https://doi.org/10.48550/arXiv.2605.18030}
 #'
 #' Guan, Y., Sherman, M. & Calvin, J. A. (2004). A nonparametric test for spatial isotropy using subsampling. \emph{J. Americ. Statist. Assoc.}, 99, 810-821. \doi{https://doi.org/10.1198/016214504000001150}
 #'
@@ -57,10 +57,10 @@
 #'
 #'  dat <- cbind(dat$data, dat$grid)
 #'
-#'  ## Test for isotropy using the subsample test with 5x5 subsamples
+#'  ## Test for isotropy using the subsampling test with 5x5 subsamples
 #'  test.sub <- isotropy_test(dat, window.dims = c(5,5), method = "subsampling")
 #'
-#'  ## Test for isotropy using the blockpermutation test with 6x6 blocks
+#'  ## Test for isotropy using the block permutation test with 6x6 blocks
 #'  test.sub <- isotropy_test(dat, window.dims = c(6,6), method = "blockpermutation")
 #' }
 #'
