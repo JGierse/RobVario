@@ -130,7 +130,7 @@ simulate_grf <- function(gridsize,
     }
   }
 
-  grid.coord <- expand.grid(1:gridsize[1], 1:gridsize[2]) # save the grid of the data
+  grid.coord <- expand.grid("x" = 1:gridsize[1], "y" = 1:gridsize[2]) # save the grid of the data
   data <- data$data # save the simulated data (for each iteration one column)
   if(n.it == 1){
     data <- matrix(data, ncol = 1)
