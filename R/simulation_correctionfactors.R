@@ -218,7 +218,7 @@ simulate_correctionfactors <- function(gridsize,
   }
 
   # optimization
-  fit <- optim(start, min_func)$par
+  fit <- optim(start, min_func, method = "L-BFGS-B", lower = c(0,0,0))$par
 
   return(fit)
 }
