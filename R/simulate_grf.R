@@ -5,7 +5,7 @@
 #' @param gridsize Integer vector of length 2 containing the gridsize in x-direction and the gridsize in y-direction
 #' @param dist.outlier A function to draw random numbers from the distribution of the outliers; default: \code{rnorm}
 #' @param variogram The variogram model. See function \code{cov.spatial} of the package \pkg{geoR} for more information; default: \code{spherical}.
-#' @param param.variogram A two-dimensional vector containing the parameters of the variogram. The first element specifies the (partial) sill and the second one the range of the variogram.
+#' @param param.variogram A two-dimensional vector containing the parameters of the semivariogram. The first element specifies the (partial) sill and the second one the range of the variogram.
 #' @param nugget Numeric. Specifies the nugget effect; default: \code{NULL}
 #' @param aniso.param A two-dimensional vector containing the parameters of the geometric anisotropy. The first element is the rotation angle and the second one the anisotropy ratio. If \code{NULL} an isotropic random field is simulated; default: \code{NULL}.
 #' @param out.type A character string specifying the type of outlier (\code{"block"} or \code{"isolated"}. If \code{NULL} a random field without outliers is simulated. See also details; default: \code{NULL}.
@@ -135,6 +135,8 @@ simulate_grf <- function(gridsize,
   if(n.it == 1){
     data <- matrix(data, ncol = 1)
   }
+  names.data <- sapply(1:ncol(data), function(x) paste0("data.", x))
+  colnames(data) <- names.data
 
   # if desired include outliers
   if(!is.null(out.type)){

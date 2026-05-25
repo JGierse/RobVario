@@ -27,7 +27,7 @@ simulate_grf(
 
 \item{variogram}{The variogram model. See function \code{cov.spatial} of the package \pkg{geoR} for more information; default: \code{spherical}.}
 
-\item{param.variogram}{A two-dimensional vector containing the parameters of the variogram. The first element specifies the (partial) sill and the second one the range of the variogram.}
+\item{param.variogram}{A two-dimensional vector containing the parameters of the semivariogram. The first element specifies the (partial) sill and the second one the range of the variogram.}
 
 \item{nugget}{Numeric. Specifies the nugget effect; default: \code{NULL}}
 
