@@ -70,7 +70,7 @@
 #'
 #' @importFrom robustbase covMcd
 #' @importFrom robustbase Qn
-#' @importFrom stats nlminb
+#' @importFrom stats optim
 #' @importFrom stats median
 #' @importFrom stats predict
 #' @import gstat
