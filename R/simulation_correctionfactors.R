@@ -70,7 +70,7 @@
 #'
 #' @importFrom robustbase covMcd
 #' @importFrom robustbase Qn
-#' @importFrom stats optim
+#' @importFrom stats nlminb
 #' @importFrom stats median
 #' @importFrom stats predict
 #' @import gstat
@@ -218,7 +218,9 @@ simulate_correctionfactors <- function(gridsize,
   }
 
   # optimization
-  fit <- optim(start, min_func, method = "L-BFGS-B", lower = c(0,1,0))$par
+  fit <- optim(start, min_func, method = "L-BFGS-B", lower = c(1e-9,1e-9,0),
+               upper = c(2*max(estimation), 2*max(dist), max(estimation)))$par
+
 
   return(fit)
 }
