@@ -9,9 +9,9 @@
 #' @param method A character string specifying the method which is used for estimation of the covariance matrix as well as for p-value calculation. Possible values are \code{"subsampling"} or \code{"blockpermutation"}. See details.
 #' @param window.dims A length-two vector specifying the width and height of the moving windows -given as the number of columns and rows, respectively- used in the subsampling approach.
 #' @param var.robust Logical. If \code{TRUE} a robust covariance estimator is used for estimation of the covariance matrix, else the classical sample covariance matrix estimator is used. See details. Default is \code{TRUE}.
-#' @param edge.sub Logical. If \code{TRUE} a correction for edge effects is used in the supsampling approach as suggested in Guan et. al. (2004). Default is \code{TRUE}.
+#' @param edge.sub Logical. If \code{TRUE} a correction for edge effects is used in the supsampling approach as suggested in Guan et. al. (2004).
 #' @param c.regularisation Numeric. A value between 0 and 1. Needed for the regularisation of the covariance estimation, if this is singular. See Gierse and Fried (2026); default: 0.1.
-#' @param B Numeric. Used permutations in the block permutations approach. Default is 1000. description
+#' @param B Numeric. Used permutations in the block permutations approach.
 #'
 #' @details
 #' This functions implements tests for isotropy based on the idea of Guan et al. (2004). All test are explained in Gierse and Fried (2026).
@@ -77,9 +77,9 @@ isotropy_test <- function(data,
                           method,
                           window.dims,
                           var.robust = TRUE,
-                          edge.sub = TRUE,
+                          edge.sub,
                           c.regularisation = 0.1,
-                          B = 1000){
+                          B){
 
   # To avoid error messages caused by incorrect capitalization
   method <- tolower(method)

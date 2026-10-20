@@ -12,9 +12,9 @@ isotropy_test(
   method,
   window.dims,
   var.robust = TRUE,
-  edge.sub = TRUE,
+  edge.sub,
   c.regularisation = 0.1,
-  B = 1000
+  B
 )
 }
 \arguments{
@@ -32,11 +32,11 @@ isotropy_test(
 
 \item{var.robust}{Logical. If \code{TRUE} a robust covariance estimator is used for estimation of the covariance matrix, else the classical sample covariance matrix estimator is used. See details. Default is \code{TRUE}.}
 
-\item{edge.sub}{Logical. If \code{TRUE} a correction for edge effects is used in the supsampling approach as suggested in Guan et. al. (2004). Default is \code{TRUE}.}
+\item{edge.sub}{Logical. If \code{TRUE} a correction for edge effects is used in the supsampling approach as suggested in Guan et. al. (2004).}
 
 \item{c.regularisation}{Numeric. A value between 0 and 1. Needed for the regularisation of the covariance estimation, if this is singular. See Gierse and Fried (2026); default: 0.1.}
 
-\item{B}{Numeric. Used permutations in the block permutations approach. Default is 1000. description}
+\item{B}{Numeric. Used permutations in the block permutations approach.}
 }
 \value{
 An object of class "isotropyRob" which is a list with an list for each estimator containing the following elements

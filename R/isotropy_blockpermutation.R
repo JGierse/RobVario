@@ -271,11 +271,14 @@ isotropy_blockpermutation <- function(data,
   blocks.perm <- list()
   for(b in 1:B){
     perm <- block.rawdata
-    move <- sample(c(T,F), length(block.rawdata), replace = TRUE)
+    move_rot <- sample(c(T,F), length(block.rawdata), replace = TRUE)
+    move_ref <- sample(c(T,F), length(block.rawdata), replace = TRUE)
+    move <- rbind(move_rot, move_ref)
 
-    for(m in 1:length(move)){
-      if(move[m] == TRUE){
-        old <- block.rawdata[[m]]
+    for(m in 1:ncol(move)){
+      # rotation
+      if(move[1, m] == TRUE){
+        old <- perm[[m]]
         old.lag <- as.matrix(old[,c("x.lag", "y.lag")])
 
         new.lag <- apply(old.lag, 1, function(y){
@@ -293,6 +296,24 @@ isotropy_blockpermutation <- function(data,
         new$lag <- paste0(new$x.lag, ".", new$y.lag)
         perm[[m]] <- new
       }
+
+      # reflection (x-axis)
+      if(move[2, m] == TRUE){
+        old <- perm[[m]] # hier greife ich noch aufs falsche
+        old.lag <- as.matrix(old[,c("x.lag", "y.lag")])
+
+        new.lag <- apply(old.lag, 1, function(y){
+            y["y.lag"] = -y["y.lag"]
+            if(y["x.lag"] < 0 & y["y.lag"] < 0){
+              y[c("x.lag", "y.lag")] <- -y[c("x.lag", "y.lag")]
+            }
+            return(y)})
+        new <- old
+        new[, c("x.lag", "y.lag")] <- t(new.lag)
+        new$lag <- paste0(new$x.lag, ".", new$y.lag)
+        perm[[m]] <- new
+      }
+
     }
     perm <- do.call(rbind, perm)
     normalize.lag <- apply(perm, 1, function(x){
